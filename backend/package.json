@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend API for the CCSU recruitment portal",
+  "main": "index.js",
+  "scripts": {
+    "dev": "dotnet watch --no-hot-reload run --project RecruitmentPortal.Api.csproj",
+    "start": "dotnet run --project RecruitmentPortal.Api.csproj",
+    "test": "echo \"No automated backend tests configured yet\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "better-sqlite3": "^12.9.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "multer": "^2.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

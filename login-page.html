@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CCSU Meerut Candidate Login</title>
+  <style>
+    :root {
+      --primary: #2f6fa5;
+      --background: #f5f6f8;
+      --text: #333333;
+      --muted: #66707a;
+      --border: #d7dde3;
+      --shadow: 0 1px 4px rgba(17, 24, 39, 0.08);
+      --notice: #f2a03d;
+      --notice-text: #5c3600;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .page-shell {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .site-header .page-shell {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+    }
+
+    .brand-mark {
+      flex: 0 0 auto;
+      width: 64px;
+      height: 64px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #ffffff;
+    }
+
+    .brand-copy h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 500;
+      letter-spacing: 0.1px;
+    }
+
+    .notice-bar {
+      background: var(--notice);
+      border-bottom: 1px solid #db8c27;
+    }
+
+    .notice-bar .page-shell {
+      padding: 8px 0;
+      font-size: 13px;
+      color: var(--notice-text);
+    }
+
+    .main-content {
+      padding: 28px 0 40px;
+    }
+
+    .portal-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      overflow: hidden;
+    }
+
+    .portal-left,
+    .portal-right {
+      padding: 24px;
+    }
+
+    .portal-left {
+      border-right: 1px solid #e5e9ee;
+    }
+
+    .register-link {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      padding: 12px 18px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 400;
+      margin-bottom: 24px;
+    }
+
+    .info-section + .info-section {
+      margin-top: 24px;
+    }
+
+    .info-section h2,
+    .login-card h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .info-lines {
+      display: grid;
+      gap: 10px;
+      font-size: 15px;
+      color: #3f464d;
+    }
+
+    .info-lines p,
+    .login-subtitle,
+    .login-help {
+      margin: 0;
+    }
+
+    .login-card {
+      border: 1px solid #e5e9ee;
+      border-radius: 6px;
+      padding: 24px;
+      background: #fbfcfd;
+      box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04);
+    }
+
+    .login-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #40474f;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cfd6dd;
+      border-radius: 6px;
+      background: #ffffff;
+      color: var(--text);
+      font-size: 15px;
+      outline: none;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: var(--primary);
+    }
+
+    .captcha-box {
+      width: 100%;
+      height: 62px;
+      border: 1px solid #cfd6dd;
+      border-radius: 6px;
+      background: #e4e7eb;
+      display: block;
+      cursor: pointer;
+    }
+
+    .login-help {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .login-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20px;
+    }
+
+    .login-button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--primary);
+      color: #ffffff;
+      padding: 11px 24px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .forgot-link {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    .forgot-wrap {
+      text-align: right;
+    }
+
+    .status-message {
+      min-height: 20px;
+      margin-top: 10px;
+      font-size: 13px;
+      color: #b42318;
+    }
+
+    .status-message.success {
+      color: #16794f;
+    }
+
+    @media (max-width: 860px) {
+      .brand-copy h1 {
+        font-size: 22px;
+      }
+
+      .portal-card {
+        grid-template-columns: 1fr;
+      }
+
+      .portal-left {
+        border-right: 0;
+        border-bottom: 1px solid #e5e9ee;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page-shell {
+        width: min(100% - 20px, 1100px);
+      }
+
+      .site-header .page-shell {
+        align-items: flex-start;
+      }
+
+      .brand-mark {
+        width: 54px;
+        height: 54px;
+      }
+
+      .brand-copy h1 {
+        font-size: 18px;
+      }
+
+      .portal-left,
+      .portal-right,
+      .login-card {
+        padding: 16px;
+      }
+
+      .login-actions,
+      .forgot-wrap {
+        text-align: left;
+        justify-content: flex-start;
+      }
+
+      .register-link {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="page-shell">
+      <div class="brand-mark" aria-hidden="true">
+        <svg width="52" height="52" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" role="presentation">
+          <rect x="1" y="1" width="50" height="50" rx="6" fill="#ffffff" stroke="#2f6fa5"/>
+          <circle cx="26" cy="26" r="17" fill="#eef4f8" stroke="#2f6fa5" stroke-width="1.2"/>
+          <text x="26" y="24" text-anchor="middle" font-size="8.5" font-family="Arial, sans-serif" fill="#2f6fa5">CCSU</text>
+          <text x="26" y="32" text-anchor="middle" font-size="5" font-family="Arial, sans-serif" fill="#2f6fa5">MEERUT</text>
+        </svg>
+      </div>
+      <div class="brand-copy">
+        <h1>Chaudhary Charan Singh University, Meerut</h1>
+      </div>
+    </div>
+  </header>
+
+  <div class="notice-bar">
+    <div class="page-shell">
+      Candidates are advised to keep their registered mobile number active and regularly check the portal for notices and schedule updates.
+    </div>
+  </div>
+
+  <main class="main-content">
+    <div class="page-shell">
+      <section class="portal-card">
+        <div class="portal-left">
+          <a class="register-link" href="#">Click Here For New Registration</a>
+
+          <div class="info-section">
+            <h2>Important Dates!</h2>
+            <div class="info-lines">
+              <p>Online application form submission starts from 15 May 2026.</p>
+              <p>Last date for registration fee payment is 30 June 2026.</p>
+            </div>
+          </div>
+
+          <div class="info-section">
+            <h2>Important Notes!</h2>
+            <div class="info-lines">
+              <p>Please use your registered user ID and password to continue your application process.</p>
+              <p>Ensure that the personal and academic details entered on the portal match your official documents.</p>
+              <p>Keep a copy of your registration details and check the notice bar for further updates issued by the university.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="portal-right">
+          <div class="login-card">
+            <h2>Candidate Login</h2>
+            <p class="login-subtitle">
+              If you are already registered, kindly login with your registered userid &amp; password..
+            </p>
+
+            <form id="loginForm" novalidate>
+              <div class="form-group">
+                <label for="userId">User ID</label>
+                <input id="userId" name="userId" type="text" placeholder="Enter user ID">
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" placeholder="Enter password">
+              </div>
+
+              <div class="form-group">
+                <label for="captchaInput">Captcha</label>
+                <canvas id="captchaCanvas" class="captcha-box" width="360" height="62" title="Click captcha to refresh"></canvas>
+                <p class="login-help">Click the captcha box to refresh the code.</p>
+              </div>
+
+              <div class="form-group">
+                <label for="captchaInput">Enter Captcha</label>
+                <input id="captchaInput" name="captchaInput" type="text" placeholder="Type captcha text">
+              </div>
+
+              <div class="login-actions">
+                <button class="login-button" type="submit">Login</button>
+              </div>
+
+              <div class="forgot-wrap">
+                <a class="forgot-link" href="#">Forgotten password?</a>
+              </div>
+
+              <div id="statusMessage" class="status-message" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const captchaCanvas = document.getElementById("captchaCanvas");
+    const captchaInput = document.getElementById("captchaInput");
+    const loginForm = document.getElementById("loginForm");
+    const statusMessage = document.getElementById("statusMessage");
+    const ctx = captchaCanvas.getContext("2d");
+    let captchaValue = "";
+
+    function generateCaptchaText(length = 6) {
+      const characters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+      let text = "";
+
+      for (let index = 0; index < length; index += 1) {
+        text += characters[Math.floor(Math.random() * characters.length)];
+      }
+
+      return text;
+    }
+
+    function drawCaptcha() {
+      captchaValue = generateCaptchaText();
+      ctx.clearRect(0, 0, captchaCanvas.width, captchaCanvas.height);
+      ctx.fillStyle = "#e4e7eb";
+      ctx.fillRect(0, 0, captchaCanvas.width, captchaCanvas.height);
+
+      for (let index = 0; index < 28; index += 1) {
+        ctx.fillStyle = `rgba(120, 128, 136, ${Math.random() * 0.28 + 0.08})`;
+        ctx.beginPath();
+        ctx.arc(
+          Math.random() * captchaCanvas.width,
+          Math.random() * captchaCanvas.height,
+          Math.random() * 1.8 + 0.4,
+          0,
+          Math.PI * 2
+        );
+        ctx.fill();
+      }
+
+      for (let index = 0; index < 6; index += 1) {
+        ctx.strokeStyle = `rgba(135, 141, 148, ${Math.random() * 0.35 + 0.1})`;
+        ctx.beginPath();
+        ctx.moveTo(Math.random() * captchaCanvas.width, Math.random() * captchaCanvas.height);
+        ctx.lineTo(Math.random() * captchaCanvas.width, Math.random() * captchaCanvas.height);
+        ctx.stroke();
+      }
+
+      ctx.font = "28px Georgia, serif";
+      ctx.fillStyle = "#444";
+      ctx.textBaseline = "middle";
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+      [...captchaValue].forEach((character, index) => {
+        const x = 36 + index * 46;
+        const y = 31 + (Math.random() * 6 - 3);
+        const angle = (Math.random() * 0.24) - 0.12;
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(angle);
+        ctx.fillText(character, 0, 0);
+        ctx.restore();
+      });
+    }
+
+    captchaCanvas.addEventListener("click", () => {
+      captchaInput.value = "";
+      statusMessage.textContent = "";
+      statusMessage.className = "status-message";
+      drawCaptcha();
+    });
+
+    loginForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (captchaInput.value.trim().toUpperCase() !== captchaValue) {
+        statusMessage.textContent = "Captcha does not match. Please try again.";
+        statusMessage.className = "status-message";
+        drawCaptcha();
+        captchaInput.value = "";
+        return;
+      }
+
+      statusMessage.textContent = "Demo login form validated successfully.";
+      statusMessage.className = "status-message success";
+    });
+
+    drawCaptcha();
+  </script>
+</body>
+</html>
