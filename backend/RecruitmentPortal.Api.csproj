@@ -4,7 +4,6 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>CCSUMeerut.Recruitment.Api</RootNamespace>
-    <NoDefaultLaunchSettingsFile>true</NoDefaultLaunchSettingsFile>
     <DefaultItemExcludes>$(DefaultItemExcludes);node_modules\**;data\*.db;uploads\**;src\**\*.js;*.md;package.json;package-lock.json;index.js;run-dev.*.log</DefaultItemExcludes>
   </PropertyGroup>
   <ItemGroup>
